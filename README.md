@@ -1,3 +1,6 @@
+加入了vuex状态管理
+所谓vuex，就是指一个数据中心，把所有的data存储起来，里面设置state、mutations、action、module来定义初始状态、改变state的方法、提交mutations的方法（可以发异步请求）、模块化
+
 # test
 
 > A Vue.js project
