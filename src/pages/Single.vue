@@ -75,7 +75,7 @@ export default {
   computed:{
   	reversedMessage: function () {
       return this.saleaddr.split('').reverse().join('')
-     }
+    }
   },
   watch:{
   	telPhone:function(o,n){
@@ -84,6 +84,7 @@ export default {
   	}
   },
   created(){
+  	console.log(this.$store.state.showFooter)
   	var param = this.$route.params;//接受传参
   	console.log(this.$route.params.id)
   	var that = this

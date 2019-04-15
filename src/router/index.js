@@ -7,6 +7,7 @@ import Home1 from '@/pages/Home1'
 import Home2 from '@/pages/Home2'
 import Home3 from '@/pages/Home3'
 import List from '@/pages/List'
+import BuildList from '@/pages/BuildList'
 Vue.use(Router)
 
 export default new Router({
@@ -35,10 +36,14 @@ export default new Router({
 		    name: 'List',
 		    component: List,
 	    },
+	    { path: '/buildlist',
+	      name: 'BuildList',
+	      component: BuildList},
     ],redirect:'/home1'
     },
     {path: '/login',name: 'Login',component: Login},
     {path: '/single',name: 'Single',component: Single},
+    
     {path: '*',redirect : {name:"Login"}}
   ]
 })

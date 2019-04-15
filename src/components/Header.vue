@@ -8,9 +8,11 @@
 		   <router-link to="Login">注册</router-link>
 		</p>
 		<p>
-		   <router-link to="Login">{{loginInfo.username}}</router-link>
+		   <router-link to="Login">{{$store.state.userName}}</router-link>
 		</p>
-	
+	    <p>
+		   <router-link to="BuildList">楼盘列表页</router-link>
+		</p>
 	
 	</div>
 </template>

@@ -31,20 +31,28 @@ export default {
   methods:{
   	queryBuildingInfo(r,s){
   		var that = this
-  		this.$axios.get('https://www.hzfc.xyz/estateinfo/find',{
-  			params:{
-  			   region:r,
-  			   state:s	
-  			}
-  		})
-  		.then(function(res){
-  			console.log(res) 			
-  				that.buildingList = JSON.parse(res.data.data.data)
-  				console.log(that.buildingList)
-  		})
-  		.catch(function(error){
-  			console.log(error)
-  		})
+  		fetch("https://www.hzfc.xyz/estateinfo/find?"+"region="+r+"&"+"state="+s).then(
+  			res=>{return res.json()
+  			}).then(res=>{
+  				console.log(res)
+  				that.buildingList = JSON.parse(res.data.data)
+  			}).catch(err=>{
+  				console.log(err)
+  			})
+//		this.$axios.get('https://www.hzfc.xyz/estateinfo/find',{
+//			params:{
+//			   region:r,
+//			   state:s	
+//			}
+//		})
+//		.then(function(res){
+//			console.log(res) 			
+//				that.buildingList = JSON.parse(res.data.data.data)
+//				console.log(that.buildingList)
+//		})
+//		.catch(function(error){
+//			console.log(error)
+//		})
   	},
   	buildingSingle(id){  
   		var that = this

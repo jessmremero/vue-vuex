@@ -3,6 +3,10 @@
 	  <header-com v-bind:loginInfo = "loginInfo"></header-com>
 	  <router-view></router-view>
 	  <p class="test">{{msg}}</p>
+	  <!--<p class="test">showFooter的值为：{{$store.state.showFooter}}</p>
+	  <p class="test">schangeableNum的值为：{{$store.state.changeableNum}}</p>
+	  <button class="btn"  @click="showFooter()">改变showFooter值</button>
+	  <button class="btn"  @click="schangeableNum()">改变schangeableNum值</button>-->
 	  <footer-com v-bind:loginInfo = "loginInfo" v-on:order="currentIndex"></footer-com>
 	</div>
 	
@@ -30,6 +34,7 @@ export default {
   	}
   },
   created(){
+  	console.log(this.$store.state.showFooter)
     var param = this.$route.query;
     this.msg = '还没有传值哦'
     this.loginInfo = {username:sessionStorage.getItem("username"),title:'信息系统'}     
@@ -38,9 +43,19 @@ export default {
   	currentIndex(i){
   		var that = this
   		this.msg = i
-  	}
+  	},
+  	showFooter(){
+  		var that = this
+//		that.$store.commit('show') 
+  		this.$store.dispatch('showFooter')
+  		console.log(this.$store.state.showFooter)
+  	},
+  	schangeableNum(){
+  		var that = this
+  		that.$store.commit('newNum') 
+  		console.log(this.$store.state.changeableNum)
+  	},
   }
-
 }
 </script>
 
@@ -130,4 +145,8 @@ background-color: #00c682;
 .test{
 	padding-bottom:30px;
 }
+.btn{
+	padding-bottom:30px;
+}
+
 </style>

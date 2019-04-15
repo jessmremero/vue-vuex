@@ -32,12 +32,15 @@ export default {
   		commit (){
   			var that = this
   			if(this.username==="admin"&&this.password==="a123456"){
-  				this.$message({duration:500,message:'登录成功！'});
-  				sessionStorage.setItem("username",this.username)
-  				setTimeout(function(){
-  					console.log(this)
-  					that.$router.push({path:'/home',query:{username:this.username,password:this.password}}); 
+  				this.$store.dispatch('login', this.username).then(() => {
+  					this.$message({duration:500,message:'登录成功！'});
+  					setTimeout(function(){
+	  					that.$router.push({path:'/home',query:{username:this.username,password:this.password}}); 
   				},1000)
+  				})
+  				
+//				sessionStorage.setItem("username",this.username)
+  		
   				
   			}else{
   				this.promptMessage = "用户名或者密码错误"

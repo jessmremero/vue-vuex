@@ -20,7 +20,7 @@
 	    </div>
 	    <div class="splitLine"></div>
 	    <div class="recommend">
-	    	<div  v-for="item in buildingList" @click="buildingSingle(item.estateid)">
+	    	<div  v-for="item in $store.state.buildlist" @click="buildingSingle(item.estateid)">
 	    		<img :src='item.photourl[0]' alt="" />
 	    	</div>	    	
 	    </div>
@@ -39,14 +39,14 @@ export default {
   		number2:'',
   		number3:'',
   		number4:'',
-  		buildingList:[]
+//		buildingList:[]
   	}
   },
   created(){
     var param = this.$route.query;
-    
+    console.log(this.$store.state.state)
     this.loginInfo = {username:sessionStorage.getItem("username"),title:'首页'}     
-    this.queryBuildingInfo('全部区域',1)
+    this.$store.dispatch('queryBuildList')
     this.queryBuildingInfo('全部区域',2)
     this.queryBuildingInfo('全部区域',3)
     this.queryBuildingInfo('全部区域',4)
@@ -62,10 +62,9 @@ export default {
   			}
   		})
   		.then(function(res){
-  			console.log(res)
+  
   			if(s===-1){
   				that.buildingList = JSON.parse(res.data.data.data)
-  				console.log(that.buildingList)
   			}
   			if(s===1){
   				that.number1 = res.data.data.totalcount
